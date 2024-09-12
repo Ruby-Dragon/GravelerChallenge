@@ -106,7 +106,7 @@ fn run_thread(thread_count : usize) -> u32
 
         if run % 1000 == 0
         {
-            println!("A Thread is on run {}", run)
+            println!("A Thread is on run {}, total threads: {}", run, thread_count)
         }
     }
 
