@@ -1,11 +1,13 @@
+use std::sync::mpsc;
 use std::thread;
 use rand::Rng;
 use rand::rngs::ThreadRng;
 use GravelerChallenge::ThreadPool;
+use rayon::prelude::*;
 
 fn main() {
     let total_samples = 1000000000;
-    let thread_count = 30;
+    let thread_count = 25;
     let samples_per_thread = total_samples / thread_count;
     let rolls = 231;
 
@@ -14,7 +16,8 @@ fn main() {
     let mut is_thread_working : Vec<bool> = vec!(false; thread_count);
 
     let mut highest = 0;
-    for i in 0..total_samples
+    /*
+    for i in 0.total_samples
     {
         let result = sample(rolls, highest);
 
@@ -28,6 +31,9 @@ fn main() {
             println!("Sample {} Complete. Highest: {}\n", i, highest);
         }
     }
+    */
+
+
 
     println!("Highest: {}", highest);
 }
