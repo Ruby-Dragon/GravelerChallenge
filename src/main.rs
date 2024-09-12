@@ -1,29 +1,35 @@
 use std::thread;
-use std::thread::Thread;
 use rand::Rng;
 use rand::rngs::ThreadRng;
-use futures::executor::ThreadPool;
+use GravelerChallenge::ThreadPool;
 
 fn main() {
     let total_samples = 1000000000;
-    let thread_count = 25;
+    let thread_count = 30;
     let samples_per_thread = total_samples / thread_count;
     let rolls = 231;
 
     let mut samples_completed = 0;
     let mut highest_samples_per_thread : Vec<u8> = vec!(0; thread_count);
+    let mut is_thread_working : Vec<bool> = vec!(false; thread_count);
 
     let mut highest = 0;
-    for _i in 0..5
+    for i in 0..total_samples
     {
         let result = sample(rolls, highest);
+
         if result > 0
         {
             highest = result;
         }
+
+        if (i % 100 == 0)
+        {
+            println!("Sample {} Complete. Highest: {}\n", i, highest);
+        }
     }
 
-    println!("Hello, world! {}", highest);
+    println!("Highest: {}", highest);
 }
 
 fn roll_d4s(mut rng: ThreadRng, number : usize) -> u32
