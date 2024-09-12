@@ -10,8 +10,7 @@ I use 2 fewer threads than the total availible so that I can have OBS run in the
 to record it.
 
 My machine has a 7950x3D CPU, which has 32 threads (very fast threads, I might add),
-which if my rough eyeballing of 25000 samples per second per core is correct,
-in addition to my math, it should be able to finish all 1 billion samples in about 22 minutes. 22 
-minutes is a lot less than 3 days. I win.
+which, when using 30 of those threads each calculating 33,333,334 samples, completed the task in 37 minutes,
+and about 24 seconds.
 
-I will have numbers soon when I actually try it.
+Clearly, this is faster than the original code :)
